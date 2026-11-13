@@ -25,6 +25,10 @@ const menuSchema = new mongoose.Schema({
       message: 'Category must be: starters, mains, desserts or drinks'
     }
   },
+  image: {
+    type: String,
+    trim: true
+  },
   featured: {
     type: Boolean,
     default: false

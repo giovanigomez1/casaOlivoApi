@@ -20,6 +20,7 @@ export default [
     price: 320,
     category: 'starters',
     featured: true,
+    image: './images/dishes/pulpo.webp'
   },
   {
     name: 'Croquetas de jamón',
@@ -36,6 +37,7 @@ export default [
     price: 260,
     category: 'mains',
     featured: true,
+    image: './images/dishes/risotto.webp'
   },
   {
     name: 'Cordero al romero',
@@ -43,6 +45,7 @@ export default [
     price: 380,
     category: 'mains',
     featured: true,
+    image: './images/dishes/cordero.webp'
   },
   {
     name: 'Paella de mariscos',
@@ -66,6 +69,7 @@ export default [
     price: 140,
     category: 'desserts',
     featured: true,
+    image: './images/dishes/tarta.webp'
   },
   {
     name: 'Crema catalana',
