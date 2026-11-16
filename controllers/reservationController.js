@@ -119,13 +119,6 @@ export const getAvailability = catchAsync(async (req, res, next) => {
   const { date, guests } = req.query
 
   if (!isValidDateString(date)) return next(new AppError('Formato de fecha incorrecto, usa AAAA-MM-DD', 400))
-  if (isClosedDay(date)) return next(new AppError('El restaurante cierra los lunes, por favor selecciona otro día', 400))
-
-  const guestsToNumber = Number(!guests ? 1 : guests)
-  const guestError = validateGuests(guestsToNumber)
-  if (guestError) return next(new AppError(guestError, 400))
-
-  const slots = await getDayAvailability(date, guestsToNumber)
 
   if (isClosedDay(date)) {
     return res.status(200).json({
@@ -137,11 +130,19 @@ export const getAvailability = catchAsync(async (req, res, next) => {
       }
     })
   }
+
+  const guestsToNumber = Number(!guests ? 1 : guests)
+  const guestError = validateGuests(guestsToNumber)
+  if (guestError) return next(new AppError(guestError, 400))
+
+  const slots = await getDayAvailability(date, guestsToNumber)
+
   res.status(200).json({
     status: 'success',
     data: {
       date,
-      slots
+      slots,
+      closed: false
     }
   })
 })
