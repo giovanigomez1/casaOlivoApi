@@ -18,8 +18,8 @@ const handleValidationErrorDB = err => {
   return new AppError(message, 400)
 }
 
-const handleJWTError = () => new AppError('Invalid token, please log in again.', 401)
-const handleJWTExpiredError = () => new AppError('Token has expired, please log in again.', 401)
+const handleJWTError = () => new AppError('Tu sesión expiró, inicia sesión de nuevo.', 401)
+const handleJWTExpiredError = () => new AppError('Tu sesión expiró, inicia sesión de nuevo.', 401)
 
 const sendErrorDev = (err, req, res) => {
   //API A)

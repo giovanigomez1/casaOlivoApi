@@ -109,40 +109,6 @@ export const protect = catchAsync(async (req, res, next) => {
 })
 
 
-// export const isLoggedIn = async (req, res, next) => {
-//   const token = req.cookies.jwt
-
-//   if (!token) {
-//     res.status(200).json({
-//       status: 'success',
-//       data: {
-//         user: null
-//       }
-//     })
-//   }
-
-//   const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET)
-//   const currentUser = await User.findById(decoded.id)
-
-//   if (!currentUser) {
-//     res.status(200).json({
-//       status: 'success',
-//       data: {
-//         user: null
-//       }
-//     })
-//   }
-//   res.status(200).json({
-//     status: 'success',
-//     data: {
-//       user: currentUser
-//     }
-//   })
-// }
-
-
-
-
 export const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
